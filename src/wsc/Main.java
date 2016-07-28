@@ -19,24 +19,22 @@ import com.sforce.ws.ConnectorConfig;
  */
 public class Main {
 
-	public static final String USERNAME = "pambure@xlnc.com";
-	public static final String PASSWORD = "@pkum@r1229";
-	public static final String SECURITY_TOKEN = "hcfDYtAm16JOAxHMAA9ImUsh";
 	public static EnterpriseConnection connection;
 
 	public static void main(String[] args) {
 		ConnectorConfig config = new ConnectorConfig();
-		config.setUsername(USERNAME);
-		config.setPassword(PASSWORD+SECURITY_TOKEN);
+		config.setUsername(CommonUtil.USERNAME);
+		config.setPassword(CommonUtil.PASSWORD+CommonUtil.SECURITY_TOKEN);
 		
 		try {
 			connection = Connector.newConnection(config);
 			System.out.println("**********CONNECTION ESTABLISHED*************");
 			
 			queryAccount();
-//			createAccount();
-//			updateAccount();
+			createAccount();
+			updateAccount();
 			deleteAccount();
+			
 		} catch (ConnectionException e) {
 			e.printStackTrace();
 		}
